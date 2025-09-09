@@ -1,5 +1,5 @@
 # ==============================
-# Favorita Sales Forecasting Data Preprocessing (Final Version)
+# Favorita Sales Forecasting Data Preprocessing (Final Version with Boolean Fix)
 # ==============================
 
 import pandas as pd
@@ -122,7 +122,15 @@ test = pd.get_dummies(test, columns=categorical_cols, drop_first=True)
 # Align train & test to have the same columns
 train, test = train.align(test, join="left", axis=1, fill_value=0)
 
-print("One-Hot Encoding completed!")
+# ==============================
+# Step 8: Convert Boolean Columns to Int (0/1)
+# ==============================
+print("Converting boolean columns to int...")
+
+train = train.astype({col: 'int8' for col in train.select_dtypes(include=['bool']).columns})
+test = test.astype({col: 'int8' for col in test.select_dtypes(include=['bool']).columns})
+
+print("Boolean conversion completed!")
 
 # ==============================
 # Final Output

@@ -135,6 +135,17 @@ print("Boolean conversion completed!")
 # ==============================
 # Final Output
 # ==============================
+# ==============================
+# Step 8: Save Processed Data
+# ==============================
+print("Saving processed datasets...")
+
+train.to_csv("train_processed.csv", index=False)
+test.to_csv("test_processed.csv", index=False)
+
+print("✅ Processed TRAIN dataset saved as train_processed.csv")
+print("✅ Processed TEST dataset saved as test_processed.csv")
+
 print("✅ Final TRAIN dataset shape:", train.shape)
 print("✅ Final TEST dataset shape:", test.shape)
 print(train.head(10))
